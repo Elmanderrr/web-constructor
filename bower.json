@@ -1,0 +1,22 @@
+{
+  "name": "web-constructor",
+  "description": "web-constructor",
+  "main": "",
+  "authors": [
+    "a.korolev <elmanderrr2@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web",
+    "constructor"
+  ],
+  "homepage": "https://github.com/Elmanderrr/site-constructor",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
