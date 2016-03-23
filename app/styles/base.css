@@ -1,0 +1,56 @@
+@media (min-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+.content-mode,
+.edit-mode,
+.drag-mode,
+.props-mode{
+    outline: none !important;
+}
+
+
+.modal-custom-content textarea {
+    margin-bottom: 5px;
+    max-height: 150px;
+    min-height:70px;
+    resize:vertical;
+}
+
+.sweet-alert {
+    width: 700px ;
+    margin-left: -350px;
+}
+
+
+.constructor-holder {
+    position: relative;
+}
+
+.codemirror-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.5);
+}
+
+.codemirror-holder .codemirror-ctrls {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    z-index: 999;
+}
+
+.CodeMirror {
+    height: 100%;
+}
