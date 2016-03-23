@@ -73,10 +73,12 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
      */
     loadIframe () {
         this.$iframe = document.createElement('iframe');
-        this.$iframe.src = this.iframeSrc;
+        //this.$iframe.src = this.iframeSrc;
 
         this.$root.insertAdjacentHTML('beforeend', this.getEditorCtrlsTemplate());
         this.$root.appendChild(this.$iframe);
+
+
 
         return new Promise((resolve, reject) => this.onIframeLoad(resolve))
 
@@ -87,9 +89,12 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
      * @param resolve
      */
     onIframeLoad (resolve) {
+        this.$iframe.contentDocument.write(this.templates.getTemplate('iframe'))
 
-        this.$iframe.addEventListener('load', resolve);
+        //this.$iframe.addEventListener('load', resolve);
 
+
+        resolve()
     }
 
     /**
@@ -97,8 +102,7 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
      * @param e
      */
     onAfterIframeLoad (e) {
-
-        this.$iframeContent = e.target.contentWindow.document.body;
+        this.$iframeContent = this.$iframe.contentWindow.document.body;
         this.$iframeContent.innerHTML = this.getDropAreaTemplate();
 
         this.attachDragElements(this.$dragElements)

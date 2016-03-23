@@ -62,52 +62,52 @@
 </script>
 
 
-<!--<script src="../jspm_packages/system.js"></script>-->
-<!--<script src="../config.js"></script>-->
-<!--<script src="../jspm_packages/npm/underscore@1.8.3/underscore-min.js"></script>-->
-<!--<script>-->
-  <!--System.import('app/bootstrap.js')-->
-          <!--.then(function () {-->
-            <!--var script = document.createElement('script');-->
-            <!--script.src = 'init.js';-->
-            <!--document.body.appendChild(script)-->
-          <!--});-->
-<!--</script>-->
-
-
-<script src="dist/build.min.js"></script>
+<script src="../jspm_packages/system.js"></script>
+<script src="../config.js"></script>
+<script src="../jspm_packages/npm/underscore@1.8.3/underscore-min.js"></script>
 <script>
-  var constructor = new Constructor({
-      holder:document.body.querySelector('.constructor-holder'),
-      layout:document.body.querySelector('script.layout-tpl').innerHTML,
-      dragElements:document.body.querySelectorAll('[interactive-element]')
-  });
-
-  constructor
-      .on('drop-area:drop', (e, data) => {
-          var type = data.dist.getAttribute('role');
-          constructor.appendHTML(data.dist, `
-        <p class="lead">Shop Name</p>
-        <div class="list-group">
-            {% for item in menu%}
-                <a href="#" class="list-group-item active">{{ item.name }}</a>
-            {% endfor %}
-            <!--<a href="#" class="list-group-item active">Category 1</a>-->
-            <!--<a href="#" class="list-group-item">Category 2</a>-->
-            <!--<a href="#" class="list-group-item">Category 3</a>-->
-        </div>
-          `)
-      })
-      .on('block:dragstart', (e, data) => {
-          data.src.style.opacity = '0.5'
-      })
-      .on('block:dragend', (e, data) => {
-          data.src.style.opacity = ''
-      })
-      .on('constructor:load', (e, data) => {
-          constructor.activateMode('drag')
-      });
-
+  System.import('app/bootstrap.js')
+          .then(function () {
+            var script = document.createElement('script');
+            script.src = 'init.js';
+            document.body.appendChild(script)
+          });
 </script>
+
+
+<!--<script src="dist/build.min.js"></script>-->
+<!--<script>-->
+  <!--var constructor = new Constructor({-->
+      <!--holder:document.body.querySelector('.constructor-holder'),-->
+      <!--layout:document.body.querySelector('script.layout-tpl').innerHTML,-->
+      <!--dragElements:document.body.querySelectorAll('[interactive-element]')-->
+  <!--});-->
+
+  <!--constructor-->
+      <!--.on('drop-area:drop', (e, data) => {-->
+          <!--var type = data.dist.getAttribute('role');-->
+          <!--constructor.appendHTML(data.dist, `-->
+        <!--<p class="lead">Shop Name</p>-->
+        <!--<div class="list-group">-->
+            <!--{% for item in menu%}-->
+                <!--<a href="#" class="list-group-item active">{{ item.name }}</a>-->
+            <!--{% endfor %}-->
+            <!--&lt;!&ndash;<a href="#" class="list-group-item active">Category 1</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="#" class="list-group-item">Category 2</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="#" class="list-group-item">Category 3</a>&ndash;&gt;-->
+        <!--</div>-->
+          <!--`)-->
+      <!--})-->
+      <!--.on('block:dragstart', (e, data) => {-->
+          <!--data.src.style.opacity = '0.5'-->
+      <!--})-->
+      <!--.on('block:dragend', (e, data) => {-->
+          <!--data.src.style.opacity = ''-->
+      <!--})-->
+      <!--.on('constructor:load', (e, data) => {-->
+          <!--constructor.activateMode('drag')-->
+      <!--});-->
+
+<!--</script>-->
 </body>
 </html>
