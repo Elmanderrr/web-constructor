@@ -17,8 +17,7 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
 
         this.dispatcher = dispatcher;
         this.templates = templates;
-
-        this.iframeSrc = 'iframe/iframe.html';
+        this.iframeWrapper = '<div class="drop-area"></div>'
 
         this.$root = holder;
         this.$dragElements = dragElements;
@@ -40,22 +39,8 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
      */
     init () {
 
-        this.loadIframe()
+        this.buildIframe()
             .then(this.onAfterIframeLoad.bind(this));
-
-    }
-
-    /**
-     *
-     * @returns {String}
-     */
-    getDropAreaTemplate() {
-
-        return `
-            <div class="drop-area">
-                ${this.templates.__layout}
-            </div>
-        `
 
     }
 
@@ -69,42 +54,30 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
 
     /**
      *
-     * @returns {Promise}
+     * @returns {Promise.<T>}
      */
-    loadIframe () {
+    buildIframe () {
         this.$iframe = document.createElement('iframe');
-        //this.$iframe.src = this.iframeSrc;
-
-        this.$root.insertAdjacentHTML('beforeend', this.getEditorCtrlsTemplate());
         this.$root.appendChild(this.$iframe);
 
+        // Insert content in to the iframe and do necessary wrapper around given layout content
+        this.$iframe.contentDocument.write(this.templates.getTemplate('__layout'));
+        this.$iframe.contentDocument.head.innerHTML += this.templates.getTemplate('styles');
 
-
-        return new Promise((resolve, reject) => this.onIframeLoad(resolve))
-
-    }
-
-    /**
-     *
-     * @param resolve
-     */
-    onIframeLoad (resolve) {
-        this.$iframe.contentDocument.write(this.templates.getTemplate('iframe'))
-
-        //this.$iframe.addEventListener('load', resolve);
-
-
-        resolve()
-    }
-
-    /**
-     *
-     * @param e
-     */
-    onAfterIframeLoad (e) {
         this.$iframeContent = this.$iframe.contentWindow.document.body;
-        this.$iframeContent.innerHTML = this.getDropAreaTemplate();
 
+        helper.wrap(
+            this.iframeWrapper,
+            helper.qs('body *', this.$iframeContent)
+        );
+
+        // Insert modes controllers button
+        this.$root.insertAdjacentHTML('beforeend', this.getEditorCtrlsTemplate());
+
+        return Promise.resolve()
+    }
+
+    onAfterIframeLoad () {
         this.attachDragElements(this.$dragElements)
             .attachDropArea()
             .attachEditorHandlers();

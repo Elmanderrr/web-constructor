@@ -1,101 +1,89 @@
 const templates = {
 
-    iframe:`
-        <!doctype html>
-        <html lang="en">
-            <head>
-            <meta charset="UTF-8">
-            <title>Document</title>
+    styles:`
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <style>
+            .drag-enter {
+                outline: 2px dashed #ff9f00 !important;
+            }
 
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-            <style>
-                .drag-enter {
-                    outline: 2px dashed #ff9f00 !important;
-                }
+            .drop-area {
+                border: 2px solid black;
+            }
 
-                .drop-area {
-                    border: 2px solid black;
-                }
+            .drop-area {
+                min-height: 500px;
+            }
 
-                .drop-area {
-                    min-height: 500px;
-                }
+            .drop-area [role="header"] *,
+            .drop-area [role="footer"] *,
+            .drop-area [role="content"] *,
+            .drop-area [role="sidebar"] *,
+            .drop-area [role="footer"] * {
+                pointer-events: none;
+            }
 
-                .drop-area [role="header"] *,
-                .drop-area [role="footer"] *,
-                .drop-area [role="content"] *,
-                .drop-area [role="sidebar"] *,
-                .drop-area [role="footer"] * {
-                    pointer-events: none;
-                }
+            [draggable="true"],
 
+            [data-mode="blocks"] * ,
+            [data-mode="content"] *,
+            [data-mode="props"] * {
+                pointer-events: auto !important;
+            }
 
+            .drop-area [role="header"],
+            .drop-area [role="footer"],
+            .drop-area [role="content"],
+            .drop-area [role="sidebar"],
+            .drop-area [role="footer"] {
+                min-height:200px;
+            }
 
-                [draggable="true"],
+            [switchable] {
+                position: relative;
+            }
 
-                [data-mode="blocks"] * ,
-                [data-mode="content"] *,
-                [data-mode="props"] * {
-                    pointer-events: auto !important;
-                }
+            /*[data-mode="edit"] [switchable] *:hover {*/
+                /*!*box-shadow:0px 0px 25px -5px rgba(0,0,100,0.68);*!*/
+                /*cursor:text;*/
+            /*}*/
 
-                .drop-area [role="header"],
-                .drop-area [role="footer"],
-                .drop-area [role="content"],
-                .drop-area [role="sidebar"],
-                .drop-area [role="footer"] {
-                    min-height:200px;
-                }
+            .switch-controllers {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.4);
+                animation: fadeIn 0.2s ease-out;
+                z-index: 99;
+                text-align: right;
+                padding: 5px;
+                cursor: pointer;
+            }
 
-                [switchable] {
-                    position: relative;
-                }
+            .switch-controllers button {
+                display: inline-block;
+            }
 
-                /*[data-mode="edit"] [switchable] *:hover {*/
-                    /*!*box-shadow:0px 0px 25px -5px rgba(0,0,100,0.68);*!*/
-                    /*cursor:text;*/
-                /*}*/
-
-                .switch-controllers {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(255,255,255,0.4);
-                    animation: fadeIn 0.2s ease-out;
-                    z-index: 99;
-                    text-align: right;
-                    padding: 5px;
-                    cursor: pointer;
-                }
-
-                .switch-controllers button {
+            @keyframes fadeIn {
+                from {
+                    opacity:0;
                     display: inline-block;
                 }
-
-                @keyframes fadeIn {
-                    from {
-                        opacity:0;
-                        display: inline-block;
-                    }
-                    to {
-                        opacity: 1;
-                        display: inline-block;
-                    }
+                to {
+                    opacity: 1;
+                    display: inline-block;
                 }
+            }
 
-                .on-hover {
-                    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.35);
-                    border-radius: 2px;
-                    cursor: text;
-                }
+            .on-hover {
+                box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.35);
+                border-radius: 2px;
+                cursor: text;
+            }
 
-            </style>
-            </head>
-            <body></body>
-        </html>
+        </style>
     `,
 
     editPanel: `
