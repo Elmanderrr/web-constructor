@@ -51,6 +51,6 @@ iframe {
     z-index: 999;
 }
 
-.CodeMirror {
+.codemirror-holder .CodeMirror {
     height: 100% !important;
 }
