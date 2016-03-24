@@ -71,9 +71,8 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
             helper.qs('body *', this.$iframeContent)
         );
 
-        console.log(this.$root)
         // Insert modes controllers button
-        this.$root.insertAdjacentHTML('beforeend', this.getEditorCtrlsTemplate());
+        this.$root.insertAdjacentHTML('afterbegin', this.getEditorCtrlsTemplate());
 
         return Promise.resolve()
     }
