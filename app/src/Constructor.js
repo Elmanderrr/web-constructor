@@ -29,12 +29,10 @@ class Constructor {
      *
      * @param event
      * @param callback
-     * @returns {Constructor}
+     * @returns {*|{unsub}}
      */
     on (event, callback) {
-        this.mediator.sub(event, callback);
-
-        return this
+        return this.mediator.sub(event, callback);
     }
 
     /**
