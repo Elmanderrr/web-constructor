@@ -43,11 +43,6 @@ const templates = {
                 position: relative;
             }
 
-            /*[data-mode="edit"] [switchable] *:hover {*/
-                /*!*box-shadow:0px 0px 25px -5px rgba(0,0,100,0.68);*!*/
-                /*cursor:text;*/
-            /*}*/
-
             .switch-controllers {
                 position: absolute;
                 right: 0;

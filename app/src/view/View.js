@@ -60,8 +60,25 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
         this.$iframe = document.createElement('iframe');
         this.$root.appendChild(this.$iframe);
 
-        // Insert content in to the iframe and do necessary wrapper around given layout content
-        this.$iframe.contentDocument.write(this.templates.getTemplate('__layout'));
+        this.transformIframe(
+            this.templates.getTemplate('__layout')
+        );
+
+        // Insert modes controllers button
+        this.$root.insertAdjacentHTML('afterbegin', this.getEditorCtrlsTemplate());
+
+        return Promise.resolve()
+    }
+
+    /**
+     * I insert content in to the iframe and do necessary wrapper around given layout content
+     * @param layout
+     */
+    transformIframe(layout) {
+        this.$iframe.contentWindow.document.open();
+        this.$iframe.contentDocument.write(layout);
+        this.$iframe.contentWindow.document.close();
+
         this.$iframe.contentDocument.head.innerHTML += this.templates.getTemplate('styles');
 
         this.$iframeContent = this.$iframe.contentWindow.document.body;
@@ -71,10 +88,6 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
             helper.qs('body *', this.$iframeContent)
         );
 
-        // Insert modes controllers button
-        this.$root.insertAdjacentHTML('afterbegin', this.getEditorCtrlsTemplate());
-
-        return Promise.resolve()
     }
 
     onAfterIframeLoad () {
@@ -110,6 +123,24 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
 
         this.dispatcher.parseDeclaredEvents(this, root.querySelectorAll('[data-event]'));
 
+    }
+    
+    reload (layout) {
+        if (!layout) {
+            throw 'Constructor: layout argument hasn\'t been given'
+        }
+
+        this.transformIframe(
+            layout
+        );
+
+        this
+            .attachDropArea()
+            .attachEditorHandlers();
+
+        this.parseEvents();
+
+        this.dispatcher.mediator.pub('constructor:layout-reload')
     }
 }
 

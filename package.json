@@ -1,4 +1,5 @@
 {
+  "scripts": {"build": "jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js"},
   "jspm": {
     "dependencies": {
       "codemirror": "npm:codemirror@^5.13.0",

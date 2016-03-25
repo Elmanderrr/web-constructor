@@ -42,21 +42,23 @@ class Constructor {
      * @param nodes
      */
     addDraggableItems (nodes=[]) {
-
         this.view.attachDragElements(nodes);
-
     }
 
     appendHTML () {
-
         this.view.insertHTML.apply(this.view, arguments);
-
     }
 
     activateMode () {
-
         this.view.setActiveMode.apply(this.view, arguments);
+    }
 
+    /**
+     *
+     * @param layout
+     */
+    reloadLayout (layout) {
+        this.view.reload(layout)
     }
 
 
