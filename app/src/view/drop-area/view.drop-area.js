@@ -107,11 +107,18 @@ class DropArea {
      * I create wrapper for HTML for better opportunity to manipulate further content
      * @param dist
      * @param html
+     * @param props
      */
-    insertHTML (dist, html) {
+    insertHTML (dist, html, props) {
         let wrapper = document.createElement('div');
         wrapper.innerHTML = html;
         wrapper.setAttribute('switchable','')
+
+        if (props) {
+            Object.keys(props).forEach(key => {
+                wrapper.setAttribute(`data-${key}`, props[key])
+            })
+        }
 
         dist.appendChild(wrapper);
     }

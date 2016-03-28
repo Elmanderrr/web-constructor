@@ -9,7 +9,7 @@ var constructor = new Constructor({
 constructor
     .on('drop-area:drop', (e, data) => {
         var type = data.dist.getAttribute('role');
-        constructor.appendHTML(data.dist, TEMPLATES[type])
+        constructor.appendHTML(data.dist, TEMPLATES[type], {id:2, name:'Artem'})
     });
 
 constructor.on('block:dragstart', (e, data) => {
