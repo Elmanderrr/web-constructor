@@ -81,7 +81,9 @@ class SwitchMode {
     removeElement (e) {
         let parent = helper.findParent(e.target, '[switchable]');
 
-        parent.parentNode.removeChild(parent)
+        parent.parentNode.removeChild(parent);
+
+        this.dispatcher.mediator.pub('block:remove', {element:helper.findParent(e.target,'[drop-container]')})
     }
 
     /**

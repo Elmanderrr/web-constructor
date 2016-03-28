@@ -23,6 +23,9 @@ constructor.on('block:dragend', (e, data) => {
 constructor.on('constructor:load', (e, data) => {
         constructor.activateMode('drag')
     });
+constructor.on('block:remove', (e, data) => {
+    console.log(data.element.innerHTML)
+    });
 
 
 
