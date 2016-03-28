@@ -1,5 +1,8 @@
 {
-  "scripts": {"build": "jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js"},
+  "scripts": {
+    "build": "jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js",
+    "upload":"jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js && git commit -a -m 'v0.0.60 release' && git push && git tag v0.0.60 && git push origin v0.0.60"
+  },
   "jspm": {
     "dependencies": {
       "codemirror": "npm:codemirror@^5.13.0",
