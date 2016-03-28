@@ -35,7 +35,8 @@ const templates = {
             .drop-area [role="footer"],
             .drop-area [role="content"],
             .drop-area [role="sidebar"],
-            .drop-area [role="footer"] {
+            .drop-area [role="footer"], {
+            .drop-area [role="main"] {
                 min-height:200px;
             }
 

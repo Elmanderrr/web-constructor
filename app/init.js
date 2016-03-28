@@ -10,14 +10,17 @@ constructor
     .on('drop-area:drop', (e, data) => {
         var type = data.dist.getAttribute('role');
         constructor.appendHTML(data.dist, TEMPLATES[type])
-    })
-    .on('block:dragstart', (e, data) => {
+    });
+
+constructor.on('block:dragstart', (e, data) => {
         data.src.style.opacity = '0.5'
-    })
-    .on('block:dragend', (e, data) => {
+    });
+
+constructor.on('block:dragend', (e, data) => {
         data.src.style.opacity = ''
-    })
-    .on('constructor:load', (e, data) => {
+    });
+
+constructor.on('constructor:load', (e, data) => {
         constructor.activateMode('drag')
     });
 
