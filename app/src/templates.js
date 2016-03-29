@@ -1,8 +1,8 @@
 const templates = {
 
     styles:`
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <style>
+        <link data-type="injectable" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <style data-type="injectable">
             .drag-enter {
                 outline: 2px dashed #ff9f00 !important;
             }

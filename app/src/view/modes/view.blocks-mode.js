@@ -107,13 +107,14 @@ class SwitchMode {
                         theme:'base16-dark'
                     }
                 }
-            })
+            });
+
+            this.parseEvents();
         }
 
         this.codeMirrorInstance.setValue(parent);
         this.codeMirrorInstance.show();
 
-        this.parseEvents()
 
     }
 

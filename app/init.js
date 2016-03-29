@@ -1,39 +1,39 @@
-
 var constructor = new Constructor({
-    holder:document.body.querySelector('.constructor-holder'),
-    layout:document.body.querySelector('script.layout-tpl').innerHTML,
-    dragElements:document.body.querySelectorAll('[interactive-element]')
+    holder : document.body.querySelector('.constructor-holder'),
+    layout : document.body.querySelector('script.layout-tpl').innerHTML,
+    dragElements : document.body.querySelectorAll('[interactive-element]')
 });
 
 
 constructor
     .on('drop-area:drop', (e, data) => {
         var type = data.dist.getAttribute('role');
-        constructor.appendHTML(data.dist, TEMPLATES[type], {id:2, name:'Artem'})
+        constructor.appendHTML(data.dist, TEMPLATES[type], { id : 2, name : 'Artem' })
     });
 
 constructor.on('block:dragstart', (e, data) => {
-        data.src.style.opacity = '0.5'
-    });
+    data.src.style.opacity = '0.5'
+});
 
 constructor.on('block:dragend', (e, data) => {
-        data.src.style.opacity = ''
-    });
+    data.src.style.opacity = ''
+});
 
 constructor.on('constructor:load', (e, data) => {
-        constructor.activateMode('drag')
-    });
+    constructor.activateMode('drag');
+    console.log(constructor.getHTML())
+});
 
 constructor.on('drop-area:drag-enter', (e, data) => {
     console.log(data)
-    });
+});
 
 constructor.on('drop-area:drag-leave', (e, data) => {
     console.log(data)
-    });
-
-
-
+});
+constructor.on('block:edited', (e, data) => {
+    console.log(data)
+});
 
 
 document.body.querySelector('.add-items').onclick = () => {
@@ -50,7 +50,7 @@ document.body.querySelector('.add-items').onclick = () => {
 
 
 const TEMPLATES = {
-    sidebar:`
+    sidebar : `
         <p class="lead">Shop Name</p>
         <div class="list-group">
             {% for item in menu%}
@@ -61,7 +61,7 @@ const TEMPLATES = {
             <!--<a href="#" class="list-group-item">Category 3</a>-->
         </div>
     `,
-    content: `
+    content : `
         <div class="thumbnail">
             <img class="img-responsive" src="http://placehold.it/800x300" alt="">
             <div class="caption-full">
@@ -141,7 +141,7 @@ const TEMPLATES = {
         </div>
 
     `,
-    footer: `
+    footer : `
         <div class="row">
     <div class="col-lg-12">
         <p>Copyright © Your Website 2014</p>

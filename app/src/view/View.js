@@ -142,6 +142,21 @@ class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, Blo
 
         this.dispatcher.mediator.pub('constructor:layout-reload')
     }
+
+    /**
+     *
+     * @returns {Element}
+     */
+    getIframeHTML () {
+        let cloned = this.$iframe.contentDocument.cloneNode(true);
+
+        // Remove injected els
+        Array.from(cloned.head.querySelectorAll('[data-type="injectable"]')).forEach(element => element.parentNode.removeChild(element));
+
+        cloned.head.querySelectorAll('[data-type="injectable"]');
+
+        return cloned.documentElement
+    }
 }
 
 export default View

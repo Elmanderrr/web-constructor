@@ -59,6 +59,13 @@ class Constructor {
         this.view.reload(layout)
     }
 
+    /**
+     *
+     * @returns {Node}
+     */
+    getHTML () {
+        return this.view.getIframeHTML()
+    }
 
 }
 
