@@ -23,10 +23,14 @@ class EditorMode  {
     onContentElementClick (element) {
         if ( !this.isElementLegal(element) ) return;
 
-        let el = new EditableElement(element);
+        let el = new EditableElement(element, this.editableElementAccept.bind(this));
 
         el.init()
 
+    }
+
+    editableElementAccept (data) {
+        this.dispatcher.mediator.pub('content:edited')
     }
 
     /**

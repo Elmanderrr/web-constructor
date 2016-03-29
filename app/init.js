@@ -31,8 +31,8 @@ constructor.on('drop-area:drag-enter', (e, data) => {
 constructor.on('drop-area:drag-leave', (e, data) => {
     console.log(data)
 });
-constructor.on('block:edited', (e, data) => {
-    console.log(data)
+constructor.on('content:edited', (e, data) => {
+    console.log('edited')
 });
 
 

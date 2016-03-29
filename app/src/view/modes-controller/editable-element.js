@@ -1,8 +1,9 @@
 import swal from 'sweetalert'
 
 class EditableElement {
-    constructor (element) {
+    constructor (element, callback) {
         this.$root = element;
+        this.callback = callback;
         this._editableContent = [];
     }
 
@@ -31,6 +32,10 @@ class EditableElement {
             this._editableContent.forEach(item => {
                 item.node.textContent = item.relatedInput.value;
             })
+        }
+
+        if (typeof this.callback === 'function') {
+            this.callback()
         }
 
     }
