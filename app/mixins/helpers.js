@@ -21,6 +21,11 @@ const helpers = {
         return parent.querySelectorAll(selectors)
     },
 
+    /**
+     *
+     * @param htmlString
+     * @param src
+     */
     wrap (htmlString, src) {
         let srcParent = src.parentNode;
         let wrapper = document.createElement('div')
@@ -30,7 +35,12 @@ const helpers = {
 
         srcParent.insertAdjacentHTML('beforeend',wrapper.innerHTML)
     },
-    
+
+    /**
+     *
+     * @param element
+     * @returns {*}
+     */
     findDeepest (element) {
         while(element.children.length > 0) {
             element = element.children[0]

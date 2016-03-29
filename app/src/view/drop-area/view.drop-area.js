@@ -63,6 +63,8 @@ class DropArea {
 
         e.target.classList.add('drag-enter');
 
+        this.dispatcher.mediator.pub('drop-area:drag-enter', {src: e.target})
+
     }
 
     /**
@@ -73,6 +75,8 @@ class DropArea {
         if (!this.dragSrcElement) return;
 
         e.target.classList.remove('drag-enter');
+
+        this.dispatcher.mediator.pub('drop-area:drag-leave', {src: e.target})
     }
 
 

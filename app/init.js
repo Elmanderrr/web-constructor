@@ -23,8 +23,13 @@ constructor.on('block:dragend', (e, data) => {
 constructor.on('constructor:load', (e, data) => {
         constructor.activateMode('drag')
     });
-constructor.on('block:remove', (e, data) => {
-    console.log(data.element.innerHTML)
+
+constructor.on('drop-area:drag-enter', (e, data) => {
+    console.log(data)
+    });
+
+constructor.on('drop-area:drag-leave', (e, data) => {
+    console.log(data)
     });
 
 
