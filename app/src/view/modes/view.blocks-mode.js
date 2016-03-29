@@ -121,7 +121,7 @@ class SwitchMode {
     applyCodeMirrorEdit () {
         this.codeMirrorInstance.applyEditing();
 
-        this.dispatcher.mediator.pub('block:edited', {element:helper.findParent(e.target,'[drop-container]')})
+        this.dispatcher.mediator.pub('block:edited', {value:this.codeMirrorInstance.instance.getValue()})
     }
 
     cancelCodeMirrorEdit () {
