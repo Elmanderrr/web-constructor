@@ -1,7 +1,7 @@
 import helper from './../../mixins/helpers';
 
 import DropArea from './drop-area/view.drop-area.js'
-import EditorPanel from './modes-controller/view.modes-controller.js'
+import modesController from './modes-controller/view.modes-controller.js'
 
 //RELATED TO EDITORPANEL EXTENDS
 import ContentMode from './modes/view.content-mode.js'
@@ -10,7 +10,7 @@ import DragMode from './modes/view.drag-mode'
 import PropsMode from './modes/view.props-mode'
 
 
-class View extends helper.mix(DropArea, EditorPanel, helper.mix(ContentMode, BlocksMode, DragMode, PropsMode)) {
+class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode, BlocksMode, DragMode, PropsMode)) {
 
     constructor (dispatcher, templates, holder, dragElements, layout) {
         super();

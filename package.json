@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js",
-    "upload":"jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js && git commit -a -m 'v0.0.64 release' && git push && git tag v0.0.64 && git push origin v0.0.64"
+    "upload":"jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js && git commit -a -m 'v0.0.66 release' && git push && git tag v0.0.66 && git push origin v0.0.66"
   },
   "jspm": {
     "dependencies": {

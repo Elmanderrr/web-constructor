@@ -67,6 +67,22 @@ class Constructor {
         return this.view.getIframeHTML()
     }
 
+    /**
+     *
+     * @param modes
+     */
+    disableModes (modes) {
+        this.view.disableModes(modes)
+    }
+
+    /**
+     *
+     * @param modes
+     */
+    enableModes (modes) {
+        this.view.enableModes(modes)
+    }
+
 }
 
 export default Constructor

@@ -20,20 +20,11 @@ constructor.on('block:dragend', (e, data) => {
 });
 
 constructor.on('constructor:load', (e, data) => {
-    constructor.activateMode('drag');
-    console.log(constructor.getHTML())
-});
 
-constructor.on('drop-area:drag-enter', (e, data) => {
-    console.log(data)
 });
-
-constructor.on('drop-area:drag-leave', (e, data) => {
-    console.log(data)
-});
-constructor.on('content:edited', (e, data) => {
-    console.log('edited')
-});
+constructor.on('drop-area:drag-enter', (e, data) => {});
+constructor.on('drop-area:drag-leave', (e, data) => {});
+constructor.on('content:edited', (e, data) => {});
 
 
 document.body.querySelector('.add-items').onclick = () => {

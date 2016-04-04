@@ -1,6 +1,6 @@
 import helper from './../../../mixins/helpers'
 
-class EditorPanel  {
+class modesController  {
 
     /**
      *
@@ -34,7 +34,7 @@ class EditorPanel  {
      * @param mode
      */
     setActiveMode (mode) {
-        EditorPanel.editorModes.forEach(editorMode => {
+        modesController.editorModes.forEach(editorMode => {
             let el = this.$root.querySelector(editorMode.selector);
 
 
@@ -176,6 +176,30 @@ class EditorPanel  {
 
     }
 
+    /**
+     * I disable button controllers
+     * @param modes
+     */
+    disableModes (modes=[]) {
+        modesController.editorModes.forEach(mode => {
+            if (modes.findIndex(m => m === mode.name) !== -1) {
+                helper.qs(mode.selector).disabled = true;
+            }
+        })
+    }
+
+    /**
+     * I enable button controllers
+     * @param modes
+     */
+    enableModes (modes=[]) {
+        modesController.editorModes.forEach(mode => {
+            if (modes.findIndex(m => m === mode.name) !== -1) {
+                helper.qs(mode.selector).disabled = false;
+            }
+        })
+    }
+
 }
 
-export default EditorPanel
+export default modesController
