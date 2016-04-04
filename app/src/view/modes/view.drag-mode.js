@@ -32,6 +32,23 @@ class DragMode {
     }
 
     /**
+     * I add class to droppable area for helping user get right area for dropping
+     * @param state
+     * @param el
+     */
+    toggleDroppableArea (state = false, el) {
+        let areas = Array.from(helper.qsa('[role]', this.$iframeContent));
+
+        areas.forEach(area => {
+
+            if (el.getAttribute('data-dest') === area.getAttribute('role')) {
+                area.classList[state ? 'add' : 'remove']('droppable')
+            }
+
+        });
+    }
+
+    /**
      * About dataTransfer set:
      *      Hack for firefox that able us to drag items
      *      info: http://mereskin.github.io/dnd/
@@ -42,6 +59,8 @@ class DragMode {
         if (this.mode !== 'drag') {
             return e.preventDefault();
         }
+
+        this.toggleDroppableArea(true, e.target)
 
         e.dataTransfer.setData('text', 'undefined');
 
@@ -58,6 +77,8 @@ class DragMode {
     onDragElDragEnd (e) {
         this.dragSrcElement = null;
         e.target.classList.remove('dragging');
+
+        this.toggleDroppableArea(false, e.target)
 
         this.dispatcher.mediator.pub(`block:${e.type}`, {src: e.target})
     }

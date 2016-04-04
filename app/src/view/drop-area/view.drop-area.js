@@ -32,6 +32,15 @@ class DropArea {
     }
 
     /**
+     * I compare attributes of droppable item and dropping area and decide if item can be dropped
+     * @param droppable
+     * @returns {boolean}
+     */
+    canBeDropped (droppable) {
+        return this.dragSrcElement.getAttribute('data-dest') === droppable.getAttribute('role')
+    }
+
+    /**
      * Attaching drag events through dispatcher
      */
     attachDropArea () {
@@ -59,7 +68,9 @@ class DropArea {
      * @param e
      */
     onDropAreaDragEnter (e) {
-        if (!this.dragSrcElement || e.target == this.dragSrcElement) return;
+
+        if (!this.dragSrcElement || e.target == this.dragSrcElement || !this.canBeDropped(e.target)) return;
+
 
         e.target.classList.add('drag-enter');
 
@@ -86,7 +97,6 @@ class DropArea {
      */
     onDropAreaDragOver (e) {
         e.preventDefault();
-
     }
 
     /**
@@ -96,7 +106,7 @@ class DropArea {
     onDropAreaDrop (e) {
         e.preventDefault();
 
-        if (!this.dragSrcElement ||  e.target == this.dragSrcElement) return;
+        if (!this.dragSrcElement ||  e.target == this.dragSrcElement || !this.canBeDropped(e.target)) return;
 
         e.target.classList.remove('drag-enter');
 
