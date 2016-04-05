@@ -38,6 +38,8 @@ class DragMode {
      */
     toggleDroppableArea (state = false, el) {
         let areas = Array.from(helper.qsa('[role]', this.$iframeContent));
+        el = helper.matches.call(el,'[interactive-element]') ? el : helper.findParent(el, '[interactive-element]');
+
 
         areas.forEach(area => {
 

@@ -33,11 +33,17 @@ class DropArea {
 
     /**
      * I compare attributes of droppable item and dropping area and decide if item can be dropped
-     * @param droppable
+     * @param droppingArea
      * @returns {boolean}
      */
-    canBeDropped (droppable) {
-        return this.dragSrcElement.getAttribute('data-dest') === droppable.getAttribute('role')
+    canBeDropped (droppingArea) {
+        let droppable;
+
+        if (!helper.matches.call(this.dragSrcElement,'[interactive-element]')) {
+            droppable = helper.findParent(this.dragSrcElement, '[interactive-element]');
+        }
+
+        return (droppable || this.dragSrcElement).getAttribute('data-dest') === droppingArea.getAttribute('role')
     }
 
     /**
