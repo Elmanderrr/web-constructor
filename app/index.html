@@ -22,7 +22,7 @@
     <br>
     <br>
     <ul class="list-group">
-      <li class="list-group-item" interactive-element draggable="true" data-dest="sidebar">
+      <li class="list-group-item" interactive-element draggable="true" data-dest="masterLayout">
         <div><img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt=""></div>
       </li>
     </ul>
@@ -39,38 +39,9 @@
 </div>
 
 <script class="layout-tpl" type="text/template">
-  <!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-  </head>
-  <body>
-  <div class="container">
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-md-3" role="sidebar" drop-container>
-        SIDEBAR
-      </div>
-      <div class="col-md-9" role="content" drop-container>
-        CONTAINER
-      </div>
-    </div>
-    <!-- /.container -->
-    <div class="container">
-      <hr>
-      <!-- Footer -->
-      <footer role="footer" drop-container>
-        FOOTER
-      </footer>
-    </div>
+  <div drop-container role="masterLayout">
+    {% block masterLayout %}{% endblock %}
   </div>
-  </body>
-  </html>
 
 </script>
 
