@@ -1,5 +1,3 @@
-import swal from 'sweetalert'
-
 class EditableElement {
     constructor (element, callback) {
         this.$root = element;

@@ -1,5 +1,3 @@
-import codeMirror from 'codemirror'
-import 'codemirror/mode/htmlmixed/htmlmixed.js'
 import templates from './../../templates'
 
 class CodeMirrorInstance {
@@ -27,7 +25,8 @@ class CodeMirrorInstance {
 
 
     initCodeMirror () {
-        this.instance = codeMirror(
+        console.log(this)
+        this.instance = CodeMirror(
             this.holder,
             this.props.codemirror.props
         )
