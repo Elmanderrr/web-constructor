@@ -9,6 +9,8 @@ class CodeMirrorInstance {
 
 
     init () {
+        if (!CodeMirror) throw 'CodeMirror plugin doesn\'t find';
+
         this.createHolder();
         this.initCodeMirror()
     }
@@ -25,7 +27,6 @@ class CodeMirrorInstance {
 
 
     initCodeMirror () {
-        console.log(this)
         this.instance = CodeMirror(
             this.holder,
             this.props.codemirror.props

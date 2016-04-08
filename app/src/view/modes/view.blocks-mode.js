@@ -1,6 +1,6 @@
 import helper from './../../../mixins/helpers'
 
-import codeMirrorInstance from './../modes-controller/codemirror-instance'
+import codeMirrorInstance from './../components/codemirror-instance'
 
 class SwitchMode {
 

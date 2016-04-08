@@ -1,4 +1,4 @@
-import EditableElement from '../modes-controller/editable-element.js'
+import EditableElement from '../components/editable-element.js'
 
 import helper from './../../../mixins/helpers'
 

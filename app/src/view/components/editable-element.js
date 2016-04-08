@@ -6,6 +6,8 @@ class EditableElement {
     }
 
     init () {
+        if (!swal) throw 'SweetAlert plugin doesn\'t find';
+
         swal(
             {
                 animation:'slide-from-top',
@@ -88,6 +90,7 @@ class EditableElement {
 
             }
         }
+
         return children;
     }
 
@@ -110,7 +113,7 @@ class EditableElement {
      */
     mergeModels () {
 
-        // Revers array for display the fields correctly. From left to from top => top to bottom;
+        // Revers array for display the fields correctly.
         let swalCustomNodes = Array.from(
             document.body.querySelectorAll('.sweet-alert .modal-custom-content textarea')
         ).reverse();
@@ -130,6 +133,7 @@ class EditableElement {
         let textarea = document.createElement('textarea');
         textarea.classList.add('form-control');
         textarea.textContent = node.textContent;
+
 
         return `
             <div class="modal-custom-content">

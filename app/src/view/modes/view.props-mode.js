@@ -1,4 +1,4 @@
-import PropertiesEditor from '../modes-controller/properties-editor'
+import PropertiesEditor from '../components/properties-editor'
 import templates from './../../templates';
 
 import helper from './../../../mixins/helpers'
