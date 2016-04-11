@@ -27,13 +27,12 @@ const helpers = {
      * @param src
      */
     wrap (htmlString, src) {
-        let srcParent = src.parentNode;
-        let wrapper = document.createElement('div');
-        wrapper.innerHTML = htmlString;
+        src = src.length === 1 ? [src] : src;
+        let wrapper = this.createElement(htmlString);
 
-        this.findDeepest(wrapper).appendChild(src);
+        Array.from(src).forEach(child => wrapper.appendChild(child));
 
-        srcParent.insertAdjacentHTML('beforeend',wrapper.innerHTML)
+        return wrapper
     },
 
     /**
@@ -65,9 +64,23 @@ const helpers = {
         return extended
     },
 
+    /**
+     * Create Node element from given str;
+     * @param str
+     * @returns {HTMLElement}
+     */
     createElement (str) {
         let holder = document.createElement('div');
         holder.innerHTML = str;
+
+        if (holder.children.length > 1) {
+            let temp = document.createElement('div');
+            temp.appendChild(holder.children[0].cloneNode());
+
+            console.info(`
+                String must contain only the 1 wrapper, ${holder.children.length} given. ${temp.innerHTML} will be returned
+            `)
+        }
 
         return holder.children[0]
     },

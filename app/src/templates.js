@@ -10,10 +10,15 @@ const templates = {
 
             .drop-area {
                 border: 2px solid black;
+                min-height: 500px;
             }
 
-            .drop-area {
-                min-height: 500px;
+            .drop-area:after {
+                content: '';
+                display: block;
+                visibility: visible;
+                height: 0;
+                clear: both;
             }
 
             .drop-area [role="header"] *,
