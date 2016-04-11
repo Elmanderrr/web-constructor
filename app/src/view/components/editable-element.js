@@ -1,3 +1,5 @@
+import helper from './../../../mixins/helpers'
+
 class EditableElement {
     constructor (element, callback) {
         this.$root = element;
@@ -6,37 +8,63 @@ class EditableElement {
     }
 
     init () {
-        if (!swal) throw 'SweetAlert plugin doesn\'t find';
+        if (!nanoModal) throw 'nanoModal plugin doesn\'t find';
 
-        swal(
-            {
-                animation:'slide-from-top',
-                title:'Редактирование',
-                text:this.generateTemplate(),
-                html:true,
-                showCancelButton:true
-            },
-            this.setContent.bind(this)
-        );
+        this.customizeModal();
 
-        this.mergeModels();
+        this.modal = nanoModal(this.generateTemplate(), {
+            classes:'animated zoomIn',
+            buttons: [
+                {
+                    text : "OK",
+                    handler : modal => {
+                        this.setContent();
+                        setTimeout(modal.hide, 100);
+
+                    },
+                    primary : true
+                },
+                {
+                    text : "Cancel",
+                    handler : modal => setTimeout(modal.hide, 100)
+                }
+            ]
+        }).show();
+
+
+    }
+
+    /**
+     * Custom function for hiding and showing nanoModal
+     */
+    customizeModal () {
+
+        nanoModal.customShow = (defShow, modalAPI) => {
+            document.body.classList.add('no-scroll');
+            modalAPI.overlay.el.classList.add('animated', 'fadeIn');
+
+            defShow();
+
+            // Add negative margin to modal
+            modalAPI.modal.el.style.marginTop = -Math.abs(modalAPI.modal.el.offsetHeight)/2 + 'px';
+        };
+
+        nanoModal.customHide = (defHide) => {
+            document.body.classList.remove('no-scroll')
+            defHide();
+        };
+
     }
 
     /**
      *
      * @param content
      */
-    setContent (content) {
+    setContent () {
 
-        if (content) {
-            this._editableContent.forEach(item => {
-                item.node.textContent = item.relatedInput.value;
-            })
-        }
-
-        if (typeof this.callback === 'function') {
-            this.callback()
-        }
+        Array.from(this._editableContent).forEach(field => {
+            field.node.textContent = field.field.value
+        });
 
     }
 
@@ -47,10 +75,22 @@ class EditableElement {
      * @returns {string}
      */
     generateTemplate () {
-        return this.getNodes(this.$root)
-            .filter(this.filterNodes.bind(this))
-            .map(this.pushToModel.bind(this)).reverse()
-            .map(EditableElement.createField).join('')
+        this.$form = document.createElement('form');
+
+        this.getNodes(this.$root)
+            .filter(this.filterNodes.bind(this)).reverse()
+            .forEach( node => {
+                let field = this.$form.appendChild(this.createField(node));
+
+                this._editableContent.push({
+                    node:node,
+                    field: field.querySelector('textarea')
+                });
+
+            });
+
+        return this.$form
+
     }
 
     /**
@@ -83,7 +123,8 @@ class EditableElement {
             if (childNodes[i].nodeType === 1 || childNodes[i].nodeType === 3) {
 
                 children = children.concat.apply(
-                    children, [
+                    children,
+                    [
                         childNodes[i].childNodes.length ? Array.from(childNodes[i].childNodes) : childNodes[i]
                     ]
                 )
@@ -94,52 +135,20 @@ class EditableElement {
         return children;
     }
 
-    /**
-     * I push to model each node that can be possibly edited;
-     * @param node
-     * @returns {*}
-     */
-    pushToModel (node) {
-        this._editableContent.push({node});
-
-        return node
-    }
-
-
-    /**
-     * I merge earlier filled model with editable inputs in sweet-alert modal;
-     * First of all, it's a deliberate shitty code. And i go for it, just because of sweet-alert modal
-     * don't work with custom NodeList and only with HTML string. So I cant get access to my dynamically generated inputs.
-     */
-    mergeModels () {
-
-        // Revers array for display the fields correctly.
-        let swalCustomNodes = Array.from(
-            document.body.querySelectorAll('.sweet-alert .modal-custom-content textarea')
-        ).reverse();
-
-        this._editableContent.forEach((content, i) => {
-            content.relatedInput = swalCustomNodes[i];
-        });
-
-    }
 
     /**
      *
      * @param node
      * @returns {*}
      */
-    static createField (node) {
-        let textarea = document.createElement('textarea');
-        textarea.classList.add('form-control');
-        textarea.textContent = node.textContent;
-
-
-        return `
+    createField (node) {
+        let field = helper.createElement(`
             <div class="modal-custom-content">
-                ${new XMLSerializer().serializeToString(textarea)}
+                <textarea class="form-control" >${node.textContent}</textarea>
             </div>
-        `
+        `);
+
+        return field
     }
 
 }

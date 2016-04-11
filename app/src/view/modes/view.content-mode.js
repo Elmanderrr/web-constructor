@@ -23,9 +23,9 @@ class EditorMode  {
     onContentElementClick (element) {
         if ( !this.isElementLegal(element) ) return;
 
-        let el = new EditableElement(element, this.editableElementAccept.bind(this));
+        this.editableInstance = new EditableElement(element, this.editableElementAccept.bind(this));
 
-        el.init()
+        this.editableInstance.init()
 
     }
 

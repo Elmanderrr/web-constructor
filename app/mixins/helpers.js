@@ -65,6 +65,13 @@ const helpers = {
         return extended
     },
 
+    createElement (str) {
+        let holder = document.createElement('div');
+        holder.innerHTML = str;
+
+        return holder.children[0]
+    },
+
     /**
      * I return crossbrowser matches function
      * @returns {*}

@@ -20,7 +20,7 @@ constructor.on('block:dragend', (e, data) => {
 });
 
 constructor.on('constructor:load', (e, data) => {
-
+constructor.activateMode('drag')
 });
 constructor.on('drop-area:drag-enter', (e, data) => {});
 constructor.on('drop-area:drag-leave', (e, data) => {});
