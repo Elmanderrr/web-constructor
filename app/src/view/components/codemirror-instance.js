@@ -9,7 +9,7 @@ class CodeMirrorInstance {
 
 
     init () {
-        if (!CodeMirror) throw 'CodeMirror plugin doesn\'t find';
+        if (typeof CodeMirror === 'undefined') throw 'CodeMirror plugin doesn\'t find';
 
         this.createHolder();
         this.initCodeMirror()

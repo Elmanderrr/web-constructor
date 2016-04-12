@@ -8,7 +8,7 @@ class EditableElement {
     }
 
     init () {
-        if (!nanoModal) throw 'nanoModal plugin doesn\'t find';
+        if (typeof nanoModal === 'undefined') throw 'nanoModal plugin doesn\'t find';
 
         this.customizeModal();
 

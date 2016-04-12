@@ -27,7 +27,7 @@ const helpers = {
      * @param src
      */
     wrap (htmlString, src) {
-        src = src.length === 1 ? [src] : src;
+        src = src.length ? src : [src];
         let wrapper = this.createElement(htmlString);
 
         Array.from(src).forEach(child => wrapper.appendChild(child));
