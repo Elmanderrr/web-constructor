@@ -17,14 +17,9 @@ class EditorMode  {
 
         switch (element.tagName) {
             case 'DIV':
-                this.showPropertiesEditor(element)
-                break;
             case 'IMG':
-                this.showPropertiesEditor(element)
-                break;
             case 'A':
                 this.showPropertiesEditor(element)
-                break;
             default:
                 break;
         }
