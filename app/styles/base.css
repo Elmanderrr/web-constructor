@@ -2,32 +2,20 @@
     display: none !important;
 }
 
-@media (min-width: 1200px) {
-    .container {
-        width: 100%;
-    }
-}
 
-iframe {
+.Web-constructor iframe {
     width: 100%;
     height: 600px;
     border: none;
 }
 
-.content-mode,
-.edit-mode,
-.drag-mode,
-.props-mode{
+.Web-constructor .content-mode,
+.Web-constructor .edit-mode,
+.Web-constructor .drag-mode,
+.Web-constructor .props-mode{
     outline: none !important;
 }
 
-
-.modal-custom-content textarea.form-control {
-    margin-bottom: 5px;
-    max-height: 150px;
-    height:70px;
-    resize:vertical;
-}
 
 div.nanoModal {
     position: fixed;
@@ -45,22 +33,25 @@ div.nanoModalOverlay {
     padding:6px 33px;
 }
 
+.nanoModal .modal-custom-content textarea.form-control {
+    margin-bottom: 5px;
+    max-height: 150px;
+    height:70px;
+    resize:vertical;
+}
+
 .no-scroll {
     overflow: hidden;
     height: 100%;
     min-height: 100%;
 }
-.sweet-alert {
-    width: 700px ;
-    margin-left: -350px;
-}
 
 
-.constructor-holder {
+.Web-constructor .constructor-holder {
     position: relative;
 }
 
-.codemirror-holder {
+.Web-constructor .codemirror-holder {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -69,37 +60,37 @@ div.nanoModalOverlay {
     background: rgba(0,0,0,.5);
 }
 
-.codemirror-holder .codemirror-ctrls {
+.Web-constructor .codemirror-holder .codemirror-ctrls {
     position: absolute;
     right: 20px;
     top: 5px;
     z-index: 999;
 }
 
-.codemirror-holder .CodeMirror {
+.Web-constructor .codemirror-holder .CodeMirror {
     height: 100% !important;
 }
 
 
-.btn {
+.Web-constructor .btn {
     padding: 6px 10px;
     cursor: pointer;
     border:1px solid #ccc;
 }
 
-.btn.btn-success {
+.Web-constructor .btn.btn-success {
     background-color: #5cb85c;
     color: #ffffff;
     border-color: #4cae4c;
 }
 
-.btn.btn-danger {
+.Web-constructor .btn.btn-danger {
     background-color: #d9534f;
     color: #ffffff;
     border-color: #d43f3a;
 }
 
-.btn.btn-primary {
+.Web-constructor .btn.btn-primary {
     color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;

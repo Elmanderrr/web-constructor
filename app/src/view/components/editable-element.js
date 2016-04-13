@@ -1,36 +1,54 @@
 import helper from './../../../mixins/helpers'
 
 class EditableElement {
-    constructor (element, callback) {
-        this.$root = element;
-        this.callback = callback;
+    constructor () {
+        this.$root = null;
         this._editableContent = [];
+
+        this.init();
     }
+
 
     init () {
         if (typeof nanoModal === 'undefined') throw 'nanoModal plugin doesn\'t find';
 
         this.customizeModal();
 
-        this.modal = nanoModal(this.generateTemplate(), {
-            classes:'animated zoomIn',
-            buttons: [
-                {
-                    text : "OK",
-                    handler : modal => {
-                        this.setContent();
-                        setTimeout(modal.hide, 100);
+        if (!this.modal) {
+            this.modal = nanoModal('', {
+                classes:'animated zoomIn',
+                buttons: [
+                    {
+                        text : "OK",
+                        handler : modal => {
+                            this.applyContent();
+                            setTimeout(modal.hide, 100);
 
+                        },
+                        primary : true
                     },
-                    primary : true
-                },
-                {
-                    text : "Cancel",
-                    handler : modal => setTimeout(modal.hide, 100)
-                }
-            ]
-        }).show();
+                    {
+                        text : "Cancel",
+                        handler : modal => setTimeout(modal.hide, 100)
+                    }
+                ]
+            });
+        }
 
+
+
+    }
+
+    /**
+     *
+     * @param element
+     */
+    setContent (element) {
+        this.$root = element;
+
+        if (this.modal) {
+            this.modal.setContent(this.generateTemplate())
+        }
 
     }
 
@@ -60,7 +78,7 @@ class EditableElement {
      *
      * @param content
      */
-    setContent () {
+    applyContent () {
 
         Array.from(this._editableContent).forEach(field => {
             field.node.textContent = field.field.value

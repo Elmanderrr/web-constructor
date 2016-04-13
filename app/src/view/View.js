@@ -17,9 +17,10 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
 
         this.dispatcher = dispatcher;
         this.templates = templates;
-        this.iframeWrapper = '<div class="drop-area"></div>'
 
-        this.$root = holder;
+        this.iframeWrapper = '<div class="drop-area"></div>';
+        this.constructorWrapper = '<div class="Web-constructor"></div>';
+        this.$root = holder.appendChild(helper.createElement(this.constructorWrapper));
         this.$dragElements = dragElements;
 
         this.templates.__layout = layout;
