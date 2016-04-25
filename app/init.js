@@ -41,7 +41,7 @@ document.body.querySelector('.add-items').onclick = () => {
 
 
 const TEMPLATES = {
-    sidebar : `
+    sidebar1 : `
         <p class="lead">Shop Name</p>
         <div class="list-group">
             {% for item in menu%}
@@ -52,7 +52,7 @@ const TEMPLATES = {
             <!--<a href="#" class="list-group-item">Category 3</a>-->
         </div>
     `,
-    content : `
+    content2 : `
         <div class="thumbnail">
             <img class="img-responsive" src="http://placehold.it/800x300" alt="">
             <div class="caption-full">

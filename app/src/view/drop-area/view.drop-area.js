@@ -74,11 +74,11 @@ class DropArea {
      * @param e
      */
     onDropAreaDragEnter (e) {
-
         if (!this.dragSrcElement || e.target == this.dragSrcElement || !this.canBeDropped(e.target)) return;
 
-
         e.target.classList.add('drag-enter');
+
+        Array.from(e.target.querySelectorAll('*')).forEach(child => child.style.pointerEvents = 'none');
 
         this.dispatcher.mediator.pub('drop-area:drag-enter', {src: e.target})
 
@@ -90,6 +90,8 @@ class DropArea {
      */
     onDropAreaDragLeave (e) {
         if (!this.dragSrcElement) return;
+
+        console.log(e)
 
         e.target.classList.remove('drag-enter');
 
@@ -114,6 +116,7 @@ class DropArea {
 
         if (!this.dragSrcElement ||  e.target == this.dragSrcElement || !this.canBeDropped(e.target)) return;
 
+        Array.from(e.target.querySelectorAll('*')).forEach(child => child.style.pointerEvents = '');
         e.target.classList.remove('drag-enter');
 
         this.dispatcher.mediator.pub(`drop-area:${e.type}`, {
@@ -139,7 +142,7 @@ class DropArea {
                 wrapper.setAttribute(`data-${key}`, props[key])
             })
         }
-
+        
         dist.appendChild(wrapper);
     }
 

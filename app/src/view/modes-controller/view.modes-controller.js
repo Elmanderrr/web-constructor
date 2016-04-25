@@ -134,10 +134,8 @@ class modesController  {
      * @param e
      */
     onMouseOver (e) {
-        let parent = helper.findParent(e.target,'[switchable]');
-
+        let parent = helper.findParent(e.target,'[switchable]');undefined
         if (!parent) return;
-
         switch(this.mode) {
             case 'blocks':
                 this.onBlockElementHover(parent);

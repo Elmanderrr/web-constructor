@@ -84,6 +84,9 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
 
         this.$iframeContent = this.$iframe.contentWindow.document.body;
 
+        // Set minimal height to each [role] element for creating comfortable drop-are for users
+        Array.from(helper.qsa('body [role]', this.$iframeContent)).forEach(item => item.style.minHeight = '200px');
+
         // Wrap all body nodes into iframewrapper
         this.$iframeContent.appendChild(
             helper.wrap(this.iframeWrapper, helper.qsa('body *', this.$iframeContent))

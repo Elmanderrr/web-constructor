@@ -80,7 +80,7 @@ class DragMode {
         this.dragSrcElement = null;
         e.target.classList.remove('dragging');
 
-        this.toggleDroppableArea(false, e.target)
+        this.toggleDroppableArea(false, e.target);
 
         this.dispatcher.mediator.pub(`block:${e.type}`, {src: e.target})
     }

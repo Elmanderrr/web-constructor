@@ -21,32 +21,6 @@ const templates = {
                 clear: both;
             }
 
-            .drop-area [role="header"] *,
-            .drop-area [role="footer"] *,
-            .drop-area [role="content"] *,
-            .drop-area [role="sidebar"] *,
-            .drop-area [role="masterLayout"] *,
-            .drop-area [role="footer"] * {
-                pointer-events: none;
-            }
-
-            [draggable="true"],
-            [data-mode="blocks"] * ,
-            [data-mode="content"] *,
-            [data-mode="props"] * {
-                pointer-events: auto !important;
-            }
-
-            .drop-area [role="header"],
-            .drop-area [role="footer"],
-            .drop-area [role="content"],
-            .drop-area [role="sidebar"],
-            .drop-area [role="footer"],
-            .drop-area [role="main"],
-            .drop-area [role="masterLayout"] {
-                min-height:200px;
-            }
-
             [switchable] {
                 position: relative;
             }
