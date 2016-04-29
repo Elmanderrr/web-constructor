@@ -97,13 +97,13 @@ div.nanoModalOverlay {
 }
 
 
-.btn.btn-default {
+.Web-constructor .btn.btn-default {
     color: #000000;
     background-color: #fff;
     border-color: #ddd;
 }
 
-.btn.btn-default.active {
+.Web-constructor .btn.btn-default.active {
     color: #333;
     background-color: #d4d4d4;
     border-color: #8c8c8c;
