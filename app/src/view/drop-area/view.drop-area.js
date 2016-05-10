@@ -91,7 +91,6 @@ class DropArea {
     onDropAreaDragLeave (e) {
         if (!this.dragSrcElement) return;
 
-        console.log(e)
 
         e.target.classList.remove('drag-enter');
 

@@ -120,7 +120,6 @@ class SwitchMode {
 
 
     applyCodeMirrorEdit () {
-        console.log('applying')
         this.codeMirrorInstance.applyEditing();
 
         this.dispatcher.mediator.pub('block:edited', {value:this.codeMirrorInstance.instance.getValue()})

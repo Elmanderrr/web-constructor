@@ -20,7 +20,6 @@ class PropertiesEditor {
     }
 
     show (element) {
-        console.log(element)
     }
 
     create () {
