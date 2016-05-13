@@ -1,4 +1,4 @@
-import helper from './../../mixins/helpers';
+import helper from './../../mixins/helpers/dist/helper.js';
 
 import DropArea from './drop-area/view.drop-area.js'
 import modesController from './modes-controller/view.modes-controller.js'

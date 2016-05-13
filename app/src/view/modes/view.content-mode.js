@@ -1,6 +1,6 @@
 import EditableElement from '../components/editable-element.js'
 
-import helper from './../../../mixins/helpers'
+import helper from './../../../mixins/helpers/dist/helper.js'
 
 class EditorMode  {
 

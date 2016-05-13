@@ -1,4 +1,4 @@
-import helper from './../../../mixins/helpers'
+import helper from './../../../mixins/helpers/dist/helper.js'
 
 import codeMirrorInstance from './../components/codemirror-instance'
 

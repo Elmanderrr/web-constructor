@@ -1,7 +1,7 @@
 import PropertiesEditor from '../components/properties-editor'
 import templates from './../../templates';
 
-import helper from './../../../mixins/helpers'
+import helper from './../../../mixins/helpers/dist/helper.js'
 
 class EditorMode  {
 
