@@ -42,7 +42,7 @@ class DropArea {
         if (!helper.matches.call(this.dragSrcElement,'[interactive-element]')) {
             droppable = helper.findParent(this.dragSrcElement, '[interactive-element]');
         }
-
+        
         return (droppable || this.dragSrcElement).getAttribute('data-dest') === droppingArea.getAttribute('role')
     }
 
@@ -91,7 +91,6 @@ class DropArea {
     onDropAreaDragLeave (e) {
         if (!this.dragSrcElement) return;
 
-
         e.target.classList.remove('drag-enter');
 
         this.dispatcher.mediator.pub('drop-area:drag-leave', {src: e.target})
@@ -113,14 +112,19 @@ class DropArea {
     onDropAreaDrop (e) {
         e.preventDefault();
 
-        if (!this.dragSrcElement ||  e.target == this.dragSrcElement || !this.canBeDropped(e.target)) return;
+        // Trying to find parent with role if target element hasn't it
+        if (!helper.matches.call(e.target, '[role]')) {
+            var target = helper.findParent(e.target, '[role]');
+        }
+
+        if (!this.dragSrcElement ||  e.target == this.dragSrcElement || !this.canBeDropped(target || e.target)) return;
 
         Array.from(e.target.querySelectorAll('*')).forEach(child => child.style.pointerEvents = '');
         e.target.classList.remove('drag-enter');
 
         this.dispatcher.mediator.pub(`drop-area:${e.type}`, {
             src: this.dragSrcElement,
-            dist: e.target
+            dist: target || e.target
         });
 
     }
@@ -132,9 +136,8 @@ class DropArea {
      * @param props
      */
     insertHTML (dist, html, props) {
-        let wrapper = document.createElement('div');
+        let wrapper = helper.createElement('<div switchable></div>');
         wrapper.innerHTML = html;
-        wrapper.setAttribute('switchable','')
 
         if (props) {
             Object.keys(props).forEach(key => {
