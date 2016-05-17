@@ -49,7 +49,8 @@ class modesController  {
             }
         });
 
-        this.setMode(mode)
+        this.setMode(mode);
+        this.dispatcher.mediator.pub('mode:change', {mode:mode})
 
     }
 
