@@ -23,6 +23,10 @@ class modesController  {
             {
                 name : 'props',
                 selector : '.props-mode'
+            },
+            {
+                name : 'HTML',
+                selector : '.HTML-mode'
             }
         ]
     }
@@ -124,7 +128,20 @@ class modesController  {
         this.setActiveMode('props');
 
         this.dispatcher.detachEventsByName(['mouseleave']);
+    }
 
+    /**
+     *
+     * @param e
+     * @constructor
+     */
+    HTMLMode (e) {
+        this.setActiveMode('HTML');
+
+        this.disableModes(['blocks','content','drag']);
+        this.dispatcher.detachEventsByName(['mouseleave']);
+
+        this.initHTMLMode();
 
     }
 
@@ -136,6 +153,7 @@ class modesController  {
     onMouseOver (e) {
         let parent = helper.findParent(e.target,'[switchable]');undefined
         if (!parent) return;
+
         switch(this.mode) {
             case 'blocks':
                 this.onBlockElementHover(parent);

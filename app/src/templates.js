@@ -68,6 +68,7 @@ const templates = {
         <button class="btn btn-default content-mode" data-event="click:contentMode">Content Mode</button>
         <button class="btn btn-default props-mode hidden" data-event="click:propsMode">Properties Mode</button>
         <button class="btn btn-default drag-mode" data-event="click:dragMode">Drag Mode</button>
+        <button class="btn btn-default HTML-mode" data-event="click:HTMLMode">HTML mode</button>
     `,
 
     switchElement: `
@@ -93,6 +94,12 @@ const templates = {
 
             </div>
         </div>
+    `,
+
+    HTMLMode:`
+        <button class="btn btn-success codemirror-show-button" data-event="click:showCodeMirror">
+            <i class="fa fa-edit"></i>
+        </button>
     `,
 
     codeMirror: `

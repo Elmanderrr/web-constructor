@@ -8,9 +8,10 @@ import ContentMode from './modes/view.content-mode.js'
 import BlocksMode from './modes/view.blocks-mode.js'
 import DragMode from './modes/view.drag-mode'
 import PropsMode from './modes/view.props-mode'
+import HTMLMode from './modes/view.HTML-mode'
 
 
-class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode, BlocksMode, DragMode, PropsMode)) {
+class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode, BlocksMode, DragMode, PropsMode, HTMLMode)) {
 
     constructor (dispatcher, templates, holder, dragElements, layout) {
         super();
@@ -30,6 +31,7 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
             blocks: 'blocks',
             props: 'props',
             drag:'drag',
+            HTML:'HTML',
             _default: 'drag'
         };
 

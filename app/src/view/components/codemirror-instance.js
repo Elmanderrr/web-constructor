@@ -4,6 +4,7 @@ class CodeMirrorInstance {
     constructor (props) {
         this.props = props;
 
+
         this.init();
     }
 
@@ -52,12 +53,20 @@ class CodeMirrorInstance {
 
 
     show () {
-        this.holder.classList.remove('hidden')
+        this.holder.classList.remove('hidden');
+
+        if (typeof this.props.codemirror.onShow === 'function') {
+            this.props.codemirror.onShow()
+        }
     }
 
 
     hide () {
-        this.holder.classList.add('hidden')
+        this.holder.classList.add('hidden');
+
+        if (typeof this.props.codemirror.onShow === 'function') {
+            this.props.codemirror.onHide()
+        }
     }
 
 }
