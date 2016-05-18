@@ -47,8 +47,12 @@ class CodeMirrorInstance {
 
 
     applyEditing () {
-        this.editedElement.innerHTML = this.instance.getValue();
+        this.editedElement.innerHTML = this.getValue();
         this.hide()
+    }
+
+    getValue () {
+        return this.instance.getValue()
     }
 
 

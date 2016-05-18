@@ -2,6 +2,11 @@ import helper from './../../../mixins/helpers/dist/helper.js'
 import codeMirrorInstance from './../components/codemirror-instance'
 
 class HTMLMode {
+
+    getCodeMirrorContent () {
+        return this.codeMirrorInstance ?  this.codeMirrorInstance.getValue() : null;
+    }
+
     initHTMLMode () {
         
         if (!this.codeMirrorInstance) {

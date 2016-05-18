@@ -67,6 +67,10 @@ class Constructor {
         return this.view.getIframeHTML()
     }
 
+    getCodeMirrorHTML () {
+        return this.view.getCodeMirrorContent();
+    }
+
     /**
      *
      * @param modes
