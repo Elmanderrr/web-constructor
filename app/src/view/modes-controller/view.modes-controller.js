@@ -54,6 +54,10 @@ class modesController  {
 
     }
 
+    getActiveMode () {
+        return this.mode
+    }
+
     /**
      *
      * @returns {*[]}

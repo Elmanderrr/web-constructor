@@ -67,6 +67,10 @@ class Constructor {
         return this.view.getIframeHTML()
     }
 
+    /**
+     *
+     * @returns {*}
+     */
     getCodeMirrorHTML () {
         return this.view.getCodeMirrorContent();
     }
@@ -85,6 +89,14 @@ class Constructor {
      */
     enableModes (modes) {
         this.view.enableModes(modes)
+    }
+
+    /**
+     *
+     * @returns {*}
+     */
+    getCurrentMode () {
+        return this.view.getActiveMode()
     }
 
 }
