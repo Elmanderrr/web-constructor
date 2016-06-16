@@ -8,6 +8,10 @@ const templates = {
                 outline: 2px dashed #ff9f00 !important;
             }
 
+            .droppable {
+                min-height: 200px;
+            }
+
             .drop-area {
                 border: 2px solid black;
                 min-height: 500px;
