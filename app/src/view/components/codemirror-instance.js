@@ -40,9 +40,9 @@ class CodeMirrorInstance {
      */
     setValue (element) {
         this.editedElement = element;
-        this.instance.getDoc().setValue(element.innerHTML);
+        this.instance.getDoc().setValue(element.textContent);
 
-        setTimeout(() => this.instance.refresh(),10)
+        setTimeout(() => this.instance.refresh(),100)
     }
 
 
