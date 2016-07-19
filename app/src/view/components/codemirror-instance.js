@@ -64,7 +64,7 @@ class CodeMirrorInstance {
     }
 
     getValue () {
-        return this.instance.getValue()
+        return this.htmlUnescape(this.instance.getValue())
     }
 
 
