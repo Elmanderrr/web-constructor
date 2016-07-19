@@ -50,6 +50,7 @@ class CodeMirrorInstance {
 
     htmlUnescape (str) {
         return str
+        return str
             .replace(/&quot;/g, '"')
             .replace(/&#39;/g, "'")
             .replace(/&lt;/g, '<')
