@@ -40,9 +40,21 @@ class CodeMirrorInstance {
      */
     setValue (element) {
         this.editedElement = element;
-        this.instance.getDoc().setValue(element.textContent);
+        this.instance.getDoc().setValue(this.htmlUnescape(element.innerHTML));
+        
 
-        setTimeout(() => this.instance.refresh(),100)
+        setTimeout(() => this.instance.refresh(),100);
+
+
+    }
+
+    htmlUnescape (str) {
+        return str
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'")
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
     }
 
 
