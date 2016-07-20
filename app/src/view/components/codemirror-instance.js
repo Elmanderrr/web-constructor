@@ -61,10 +61,9 @@ class CodeMirrorInstance {
      * @returns {XML|string}
      */
     htmlUnescape (str) {
-        let escaped;
 
         for (let i = 0; i < this.escapeTimes; i++) {
-            escaped = str
+            str = str
                 .replace(/&quot;/g, '\'')
                 .replace(/&#39;/g, "'")
                 .replace(/&lt;/g, '<')
@@ -72,7 +71,7 @@ class CodeMirrorInstance {
                 .replace(/&amp;/g, '&');
         }
 
-        return escaped
+        return str
     }
 
 
