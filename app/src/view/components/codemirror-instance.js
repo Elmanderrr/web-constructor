@@ -3,7 +3,7 @@ import templates from './../../templates'
 class CodeMirrorInstance {
     constructor (props) {
         this.props = props;
-
+        this.escapeTimes = 4;
 
         this.init();
     }
@@ -55,13 +55,23 @@ class CodeMirrorInstance {
 
     }
 
+    /**
+     * Craziest shit ever, but it seem to only way for properly unescape string which was escaped twice (or more times)
+     * @param str
+     * @returns {XML|string}
+     */
     htmlUnescape (str) {
-        return str
-            .replace(/&quot;/g, '\'')
-            .replace(/&#39;/g, "'")
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&amp;/g, '&');
+
+        for (let i = 0; i < this.escapeTimes; i++) {
+            return str
+                .replace(/&quot;/g, '\'')
+                .replace(/&#39;/g, "'")
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&');
+        }
+
+
     }
 
 
