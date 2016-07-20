@@ -61,6 +61,7 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
      */
     buildIframe () {
         this.$iframe = document.createElement('iframe');
+        this.$iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts');
         this.$root.appendChild(this.$iframe);
 
         this.transformIframe(
