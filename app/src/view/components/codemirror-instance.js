@@ -32,6 +32,13 @@ class CodeMirrorInstance {
             this.holder,
             this.props.codemirror.props
         )
+        
+        this.instance.on('beforeChange', function (editor, changed) {
+            if (changed.origin === '+input') {
+                changed.text[0] += 'fff';
+                changed.update(changed.from, changed.to, changed.text, changed.origin)
+            }
+        })
     }
 
     /**
@@ -50,8 +57,7 @@ class CodeMirrorInstance {
 
     htmlUnescape (str) {
         return str
-        return str
-            .replace(/&quot;/g, '"')
+            .replace(/&quot;/g, '\'')
             .replace(/&#39;/g, "'")
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
