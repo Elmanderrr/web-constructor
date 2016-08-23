@@ -88,7 +88,7 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
 
         // Wrap all body nodes into iframewrapper
         this.$iframeContent.appendChild(
-            helper.wrap(this.iframeWrapper, helper.qsa('body *', this.$iframeContent))
+            helper.wrap(this.iframeWrapper, this.$iframe.contentWindow.document.body)
         );
 
 
