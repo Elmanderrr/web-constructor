@@ -17,7 +17,8 @@ const templates = {
                 min-height: 500px;
             }
 
-            .drop-area:after {
+            .drop-area:after,
+             [switchable]:after{
                 content: '';
                 display: block;
                 visibility: visible;
