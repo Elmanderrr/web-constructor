@@ -46,6 +46,10 @@ const templates = {
 
             .switch-controllers button {
                 display: inline-block;
+                padding: 6px 10px;
+                cursor: pointer;
+                border:1px solid #ccc;
+                border-radius: 2px;
             }
 
             @keyframes fadeIn {
