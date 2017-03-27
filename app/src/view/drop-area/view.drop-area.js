@@ -148,6 +148,15 @@ class DropArea {
         dist.appendChild(wrapper);
     }
 
+    insertHTMLToContainer (html, container) {
+        const dist = this.$iframeContent.querySelector(`[role=${container}]`);
+
+        if ( dist ) {
+            this.insertHTML(dist, html)
+        }
+
+    }
+
 }
 
 export default DropArea

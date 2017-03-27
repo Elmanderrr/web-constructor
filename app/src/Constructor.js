@@ -46,6 +46,10 @@ class Constructor {
     appendHTML () {
         this.view.insertHTML.apply(this.view, arguments);
     }
+    
+    appendHTMLToContainer (html, container) {
+        this.view.insertHTMLToContainer(html, container)
+    }
 
     activateMode () {
         this.view.setActiveMode.apply(this.view, arguments);
