@@ -153,6 +153,8 @@ class DropArea {
 
         if ( dist ) {
             this.insertHTML(dist, html)
+        } else {
+            throw Error(`There's no container with role ${container}`)
         }
 
     }
