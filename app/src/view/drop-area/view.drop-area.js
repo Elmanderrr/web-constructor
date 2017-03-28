@@ -148,11 +148,11 @@ class DropArea {
         dist.appendChild(wrapper);
     }
 
-    insertHTMLToContainer (html, container) {
+    insertHTMLToContainer (html, container, props = {}) {
         const dist = this.$iframeContent.querySelector(`[role=${container}]`);
 
         if ( dist ) {
-            this.insertHTML(dist, html)
+            this.insertHTML(dist, html, props)
         } else {
             throw Error(`There's no container with role ${container}`)
         }

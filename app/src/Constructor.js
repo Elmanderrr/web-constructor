@@ -47,8 +47,8 @@ class Constructor {
         this.view.insertHTML.apply(this.view, arguments);
     }
     
-    appendHTMLToContainer (html, container) {
-        this.view.insertHTMLToContainer(html, container)
+    appendHTMLToContainer (html, container, props) {
+        this.view.insertHTMLToContainer(html, container, props)
     }
 
     activateMode () {
