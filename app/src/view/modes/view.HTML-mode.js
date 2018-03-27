@@ -1,4 +1,4 @@
-import helper from './../../../mixins/helpers/dist/helper.js'
+import helper from './../../../mixins/helpers.js'
 import codeMirrorInstance from './../components/codemirror-instance'
 
 class HTMLMode {

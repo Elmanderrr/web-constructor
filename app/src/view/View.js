@@ -1,4 +1,4 @@
-import helper from './../../mixins/helpers/dist/helper.js';
+import helper from './../../mixins/helpers.js';
 
 import DropArea from './drop-area/view.drop-area.js'
 import modesController from './modes-controller/view.modes-controller.js'
@@ -86,6 +86,7 @@ class View extends helper.mix(DropArea, modesController, helper.mix(ContentMode,
 
         this.$iframeContent = this.$iframe.contentWindow.document.body;
 
+        // console.log(this.iframeWrapper, this.$iframe.contentWindow.document.body)
         // Wrap all body nodes into iframewrapper
         this.$iframeContent.appendChild(
             helper.wrap(this.iframeWrapper, this.$iframe.contentWindow.document.body)

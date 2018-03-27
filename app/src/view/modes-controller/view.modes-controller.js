@@ -1,4 +1,4 @@
-import helper from './../../../mixins/helpers/dist/helper.js'
+import helper from './../../../mixins/helpers.js'
 
 class modesController  {
 

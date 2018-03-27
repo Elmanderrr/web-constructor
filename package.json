@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js",
-    "upload": "sudo n 6 && &&jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js && git commit -a -m 'v0.1.8 release' && git push && git tag v0.1.8 && git push origin v0.1.8 && sudo n 7"
+    "upload": "sudo n 6.13.1 && &&jspm bundle-sfx --minify app/bootstrap app/dist/build.min.js && git commit -a -m 'v0.1.8 release' && git push && git tag v0.1.8 && git push origin v0.1.8 && sudo n 7"
   },
   "dependencies": {
     "codemirror": "^5.21.0",

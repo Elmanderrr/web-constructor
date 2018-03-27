@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './app/bootstrap.js',
     output: {
         filename: 'build.min.js',
         path: path.resolve(__dirname, 'app/dist')
