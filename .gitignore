@@ -1,4 +1,5 @@
 /bower_components
+/node_modules
 /jspm_packages
 /app/init.js
 /app/index.html
